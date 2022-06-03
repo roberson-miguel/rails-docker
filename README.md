@@ -23,6 +23,12 @@ DATABASE_HOST=database
 REDIS_HOST=redis
 ```
 
+- Compile as imagens de contêiner e crie os serviços
+
+```
+docker-compose up -d
+```
+
 - Crie e propague seu banco de dados e execute migrações
 
 ```
@@ -51,6 +57,8 @@ http://your_server_ip:3000
 
 - Clique em `Import Endangered Sharks`para importar os tubarões. Você verá uma mensagem de status informando que os tubarões foram importados:
 ![image](https://user-images.githubusercontent.com/41292851/171695711-3738f613-95d7-4769-ac38-88353b1693d7.png)
+
+- Será solicitado que coloque um nome de usuário (sammy) e senha (shark)
 
 - Você verá também o início da importação. Atualize sua página para ver a tabela inteira:
 ![image](https://user-images.githubusercontent.com/41292851/171696159-629bfc9e-9a4d-4ba5-b28b-789908845a43.png)
