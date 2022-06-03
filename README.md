@@ -86,6 +86,10 @@ Shark.last.inspect
 ```
 Endangered.all.count
 ```
+- Caso queira conferir o Sidekiq funcionando
+```
+docker-compose up -d
+```
 
 - Saia do console com `Exit`
 
