@@ -7,6 +7,7 @@
  - O Docker instalado no seu computador - [Como instalar Docker](https://docs.docker.com/engine/install/ubuntu/).
  - O Docker Compose instalado em seu computador [Como instalar o Docker-Compose](https://docs.docker.com/compose/install/).
  - Ajustes pós-instalação: [Utilizar Docker sem sudo](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user) É preciso reiniciar o PC após essas configurações.
+ - Se preferir poderá utilizar o arquivo [install-docker.sh](https://github.com/roberson-miguel/rails-docker/blob/master/install-docker.sh) e realizar esse pré-setup.
 
 ## Para subir o projeto
 
