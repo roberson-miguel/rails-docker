@@ -24,19 +24,19 @@ permissao=$(sudo chmod a+r /etc/apt/keyrings/docker.gpg)
 executa_imagem=$(sudo docker run hello-world)
 
 echo "Removendo o Docker...\n"
-echo $remove
+$remove
 
 echo "Atualizando pacotes...\n"
-echo $atualiza
+$atualiza
 
 echo "Instalando certificados...\n"
-echo $certificado
+$certificado
 
 echo "Criando diretorio...\n"
-echo $cria_diretorio
+$cria_diretorio
 
 echo "Adicionando chaves...\n"
-echo $adiciona_chaves
+$adiciona_chaves
 
 echo "Configurando repositorio...\n"
 echo \
@@ -44,13 +44,12 @@ echo \
   $(lsb_release -cs) stable \n" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 echo "\nAtualizando pacotes...\n"
-echo $atualiza
+$atualiza
 
 echo "Habilita permissões...\n"
-echo $permissao
+$permissao
 
 echo "Executando instalação Docker e dependencias...\n"
-echo $executa_instalacao
+$executa_instalacao
 
-echo "Executando imagem.....Se voce ver log abaixo escrito: 'Hello from docker' sua instalação está ok! \n \n"
-echo $executa_imagem
+echo "Executando imagem.....Se voce ver log abaixo escrito: 'Hello from docker' sua instalação está ok! \n" $executa_imagem
