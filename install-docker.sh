@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Salve esse conteudo em um arquivo com o nome "install-docker.sh" ou outro de sua preferencia, e execute em um terminal
+#usando "sh install-docker.sh"
+
 remove=$(sudo apt-get remove docker docker-engine docker.io containerd runc > /dev/null)
 
 atualiza=$(sudo apt-get update > /dev/null)
