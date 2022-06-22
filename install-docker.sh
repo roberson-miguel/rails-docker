@@ -1,55 +1,35 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #Salve esse conteudo em um arquivo com o nome "install-docker.sh" ou outro de sua preferencia, e execute em um terminal
 #usando "sh install-docker.sh"
 
-remove=$(sudo apt-get remove docker docker-engine docker.io containerd runc > /dev/null)
+executa_imagem=$()
 
-atualiza=$(sudo apt-get update > /dev/null)
-
-certificado=$(sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release > /dev/null)
-
-cria_diretorio=$(sudo mkdir -p /etc/apt/keyrings > /dev/null)
-adiciona_chaves=$(curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
-    sudo gpg --batch --yes --dearmor -o /etc/apt/keyrings/docker.gpg > /dev/null)
-
-executa_instalacao=$(sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin > /dev/null)
-
-permissao=$(sudo chmod a+r /etc/apt/keyrings/docker.gpg)
-
-executa_imagem=$(sudo docker run hello-world)
-
-echo "Removendo o Docker...\n"
-$remove
+echo "Removendo versões antigas do Docker...\n"
+sudo apt-get remove -y docker docker-engine docker.io containerd runc > /dev/null
 
 echo "Atualizando pacotes...\n"
-$atualiza
+sudo apt-get update > /dev/null
 
 echo "Instalando certificados...\n"
-$certificado
-
-echo "Criando diretorio...\n"
-$cria_diretorio
+sudo apt-get install ca-certificates curl gnupg lsb-release > /dev/null
 
 echo "Adicionando chaves...\n"
-$adiciona_chaves
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.gpg --create-dirs | sudo gpg --batch --yes --dearmor -o /etc/apt/keyrings/docker.gpg > /dev/null
 
 echo "Configurando repositorio...\n"
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable \n" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-echo "\nAtualizando pacotes...\n"
-$atualiza
+echo "\nAtualizando sistema após instalação...\n"
+sudo apt-get update > /dev/null
 
-echo "Habilita permissões...\n"
-$permissao
+echo "Definido permissões no arquivo de definições para instalação do Docker...\n"
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
 echo "Executando instalação Docker e dependencias...\n"
-$executa_instalacao
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin > /dev/null
 
-echo "Executando imagem.....Se voce ver log abaixo escrito: 'Hello from docker' sua instalação está ok! \n" $executa_imagem
+echo "Executando imagem... Se voce ver log abaixo escrito: 'Hello from docker' sua instalação está ok! \n"
+sudo docker run hello-world
